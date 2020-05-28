@@ -9,12 +9,12 @@ public class App
 {
     public static void main(String[] args)
     {
-    	//Main ArrayList of names (students, team-mates, etc.)
+    	//To start: Initialize a ArrayList<String> of the names (students, team-mates, etc.), utilziing 'Arrays.asList()', that you would like to randomly separate, create groups, and select Team Leaders for
     	
-    	//Matt & Gordon's Class
+    	//Matt & Gordon's Class - ArrayList<String> of student names
     	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Brooks McCament", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Dezmon Hall", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa",  "Kahan Raval", "Lindsay Prescott", "Malik E.", "Mathias Taylor", "Maurice B.", "Michael Mejia", "Mishal Baig", "Ramon Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
         
-    	//Orquidia & Daneil's Class
+    	//Orquidia & Daniel's Class - ArrayList<String> of student names
 //    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
     	
     	System.out.println( "Welcome to Cognixia JUMP's Group Generator & Randomizer!" );
@@ -28,11 +28,11 @@ public class App
     
     public static List<String> sortGroupAlphabetically(List<String> teamTempStor)
     {
-    	//For our class purposes, each group we randomly generate needs to have a team leader
-    	//To accomplish this, we have initially decided to organize the randomized/generated team alphabetically ascending by their first name and the Team Leader will be the individual first listed
-    	//The Team Leader selection logic will change over the next few weeks to ensure fair distribution of responsibilities to students, where I will be adding additional helper methods like this one so they can be called upon whenever they are needed
+    	//For our class purposes, each group we randomly generate needs to have a Team Leader
+    	//To accomplish this, we have initially decided that once each randomized/generated team in fully populated by my algo, we want to alphabetically ascending by their first name sort the newly generated team and the Team Leader will be the individual first listed
+    	//The Team Leader selection logic will change over time to ensure fair distribution of responsibilities to students, where I will be adding additional helper methods like this one so they can be called upon whenever they are needed depending on how we will to select Team Leader's
     	
-    	//We use 'Collections.sort()' to alphabetically sort the given 'teamTempStor' parameter, and then return it to the calling method (which is my 'groupRandomizeGenerator') to be printed to the console
+    	//We use 'Collections.sort()' to alphabetically sort the given 'teamTempStor' List<String> parameter by First Name, and then return it to the calling method to be utilized as needed
     	Collections.sort(teamTempStor);
     	
     	return teamTempStor;
