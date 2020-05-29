@@ -29,7 +29,7 @@ public class App
     public static List<String> sortGroupAlphabetically(List<String> teamTempStor)
     {
     	//For our class purposes, each group we randomly generate needs to have a Team Leader
-    	//To accomplish this, we have initially decided that once each randomized/generated team in fully populated by my algo, we want to alphabetically sort in ascending order by the student's first name and the Team Leader will be the first individual 
+    	//To accomplish this, we have initially decided that once each randomized/generated team is fully populated in 'tempTeamStor' by 'randomGroupGenerator(List<String> students)', we want to alphabetically sort in ascending order by the student's first name and the Team Leader will be the first individual 
     	//The Team Leader selection logic will change over time to ensure fair distribution of responsibilities to students, where I will be adding additional helper methods like this one so they can be called upon whenever they are needed depending on how we will to select Team Leader's
     	
     	//We use 'Collections.sort()' to alphabetically sort the given 'teamTempStor' List<String> parameter by First Name, and then return it to the calling method to be utilized as needed
@@ -67,16 +67,24 @@ public class App
 					teamTempStor.add(students.get(randInt));
 					students.remove(randInt);
 					
-					//Calling sorting helper method to determine Team Leader
+					//Calling my sorting helper method to determine Team Leader,
 					sortGroupAlphabetically(teamTempStor);
+					
 					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
 					System.out.println("   Team " + teamNum);
 					System.out.println("<---------->");
 					
 					//Using a 'forEach' loop to print the students names of the new group to the console
-					for (String stu: teamTempStor)
+					for (int x = 0; x < teamTempStor.size(); x++)
 					{
-						System.out.println(stu);
+						if (x == 0)
+						{
+							System.out.println("Team Leader: " + teamTempStor.get(x));
+							x++;
+							System.out.println(" ");
+							System.out.println("Team Members: ");
+						}
+						System.out.println(teamTempStor.get(x));
 					}
 					System.out.println("<---------->");
 					System.out.println(" ");
@@ -109,10 +117,16 @@ public class App
 					System.out.println("   Team " + teamNum);
 					System.out.println("<---------->");
 					
-					//Using a 'forEach' loop to print the (5) students names of the new group to the console
-					for (String stu: teamTempStor)
+					for (int x = 0; x < teamTempStor.size(); x++)
 					{
-						System.out.println(stu);
+						if (x == 0)
+						{
+							System.out.println("Team Leader: " + teamTempStor.get(x));
+							x++;
+							System.out.println(" ");
+							System.out.println("Team Members: ");
+						}
+						System.out.println(teamTempStor.get(x));
 					}
 					System.out.println("<---------->");
 					System.out.println(" ");
