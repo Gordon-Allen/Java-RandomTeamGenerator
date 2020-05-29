@@ -38,7 +38,7 @@ public class App
     	return teamTempStor;
     }
     
-    public static List<String> sortGroupAlphabeticallyReverse(List<String> teamTempStor)
+    public static List<String> sortGroupReverseAlphabetically(List<String> teamTempStor)
     {
     	//Team Leader Random Selection
     	
@@ -81,7 +81,7 @@ public class App
 //					sortGroupAlphabetically(teamTempStor);
 					
 					//Team Leader Selection OPTION #2: Calling sorting helper method #2 to determine Team Leader
-					sortGroupAlphabeticallyReverse(teamTempStor);
+					sortGroupReverseAlphabetically(teamTempStor);
 					
 					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
 					System.out.println("   Team " + teamNum);
@@ -130,7 +130,7 @@ public class App
 //					sortGroupAlphabetically(teamTempStor);
 					
 					//Team Leader Selection OPTION #2: Calling sorting helper method #2 to determine Team Leader
-					sortGroupAlphabeticallyReverse(teamTempStor);
+					sortGroupReverseAlphabetically(teamTempStor);
 					
 					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
 					System.out.println("   Team " + teamNum);
