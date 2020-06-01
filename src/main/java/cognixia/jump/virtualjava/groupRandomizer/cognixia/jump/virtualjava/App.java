@@ -28,20 +28,21 @@ public class App
     
     public static void generatedTeamConsolePrinter(List<String> teamTempStor, int teamNum)
     {
-    	//Utilizing int 'teamNum' to specific team segmentation and grouping
+    	//Utilizing int parameter's "teamNum" to specific team segmentation and grouping
     	System.out.println("   Team " + teamNum);
 		System.out.println("<---------->");
 		
-		//'FOR' loop to print Team Leader/Members to console
+		//'FOR' loop to print Team Leader first then Team Members to console
 		for (int x = 0; x < teamTempStor.size(); x++)
 		{
-			//'IF' our indexer == 0, this element is group's 'Team Leader'
+			//'IF' indexer == 0, this element is group's 'Team Leader'
 			if (x == 0)
 			{
 				System.out.println("Team Leader: " + teamTempStor.get(x));
 				x++;
 				System.out.println(" ");
 				System.out.println("Team Members: ");
+				System.out.println(" ");
 			}
 			System.out.println(teamTempStor.get(x));
 		}
@@ -49,22 +50,22 @@ public class App
 		System.out.println(" ");
     }
     
-    public static List<String> sortGroupAlphabetically(List<String> teamTempStor)
+    public static List<String> sortGroupSelectRandomTL(List<String> teamTempStor)
     {
-    	//Each group that is randomly generated will have a Team Leader
-    	
-    	//Team Leader Random Selection Method #1:
-    	//Using 'Collections.sort()' to alphabetically sort the given 'teamTempStor' parameter by First Name
-    	//The Team's Leader will be the first student element in 'teamTempStor' post-sorting
+    	//Alphabetically sorting given 'teamTempStor' parameter by First Name
     	Collections.sort(teamTempStor);
-    	return teamTempStor;
-    }
-    
-    public static List<String> sortGroupReverseAlphabetically(List<String> teamTempStor)
-    {
-    	//Team Leader Random Selection Method #2:
-    	//Reverse Alphabetical Order by First Name, Team Leader is first element post-sorting
-    	Collections.sort(teamTempStor, Collections.reverseOrder());
+    	
+    	//Generating a random int from 0 to the number of elements in 'teamTempStor' parameter
+    	int randIdx = (int)(teamTempStor.size() * Math.random());
+    	
+    	//Using 'randInt' to randomly select Team Leader and storing the student's name at that index in 'teamLead'
+    	String teamLead = teamTempStor.get(randIdx);
+    	
+    	//Setting student's name at index 0 to the index of 'randInt'
+    	teamTempStor.set(randIdx, teamTempStor.get(0));
+    	
+    	//Setting 'teamLead' name as first element in returned 'teamTempStor' for proper console printing
+    	teamTempStor.set(0, teamLead);
     	return teamTempStor;
     }
 	
@@ -73,38 +74,35 @@ public class App
 		//Calculating the number of students we have been given to randomize/group together
 		int numStudents =  students.size();
 		
-		//We start our team group numbering at '1', will increment as each new randomized/generated team is completed
+		//Starting team group numbering at '1', will increment as each new random generated team is completed
 		int teamNum = 1;
 		
-		//Declaring new ArrayList<String> to temporarily store the randomized/grouped students during iteration and calculations
+		//Declaring new ArrayList<String> to temporarily store the randomized/grouped students during iterations and calculations
 		List<String> teamTempStor = new ArrayList<String>();		
 		
-		//Here, we start iterating through our names to randomize and group together
+		//Here, starting to iterate through our names to randomize and group together from given List<String> 'students' parameter 
 		for (int idx = 0; idx <= numStudents; idx++)
 		{
-			//'WHILE' loop implementation avoids 'IndexOutOfBounds' Exception that occurs from us decrementing 'idx' & 'numStudents'
+			//'WHILE' loop implementation avoids 'IndexOutOfBounds' Exception that occurs from us decrementing 'idx' & 'numStudents' in calculations
 			while(numStudents > 0)
 			{
-				//Generating a random int from 0 to the number of elements present in 'students'
-				//'randInt' is the index of the student we are going to randomly group next
+				//Generating random int from 0 to the number of elements present in 'students'
+				//'randInt' == the index of the student we are going to randomly select and group next
 				int randInt = (int)(numStudents * Math.random());
 				
-				//Checking to see if the student we are currently iterating through is the final name in 'students' we need to group
-				//By doing so, we can dynamically generate teams no matter the user's choice of randomly generated group size initial class/group size is even/odd
+				//Checking to see if the student we are currently iterating through is the final name in 'students'
+				//This allows dynamically generation of teams no matter the user's choice of generated group size or if the provided class/group size is even/odd
 				if (numStudents - 1 == 0) 
 				{
-					//Using '.get()' to retrieve the name of the student element @ the index of 'randInt'
+					//Retrieving the name of the student element at the index of 'randInt'
 					//Then, removing that name from 'students'
 					teamTempStor.add(students.get(randInt));
 					students.remove(randInt);
+										
+					//Calling helper method to sort group and randomly select Team Leader 
+					sortGroupSelectRandomTL(teamTempStor);
 					
-					//Team Leader Selection OPTION #1:
-//					sortGroupAlphabetically(teamTempStor);
-					
-					//Team Leader Selection OPTION #2:
-					sortGroupReverseAlphabetically(teamTempStor);
-					
-					//Calling team printer helper method
+					//* Calling helper method to print randomly generated Team Leader/Team to console *
 					generatedTeamConsolePrinter(teamTempStor, teamNum);										
 									
 					//Decrementing both 'numStudents' & 'idk' to account for the student name that we removed from 'students'
@@ -112,35 +110,28 @@ public class App
 					idx--;
 				}
 				
-				//For our specific class purposes, we wanted (on average) groups of (5) members
-				//Here, if the current team being generated < 5 members:
+				//* RANDOMLY GENERATED GROUP SIZE // USER SPECIFICATION *
+				//Here, the user may specify their desired group size: we have selected (5) 
 				//We add the current randomly selected element in 'students' to 'tempTeamStor'
 				else if (teamTempStor.size() < 5)
 				{
 					teamTempStor.add(students.get(randInt));
 					
-					//Once the randomly selected student has been grouped from 'students':
-					//We remove that name from 'students' to account for the student's new team placement
+					//We then remove the name from 'students', to account for the student's new team placement
 					students.remove(randInt);
-					
 					numStudents--;
 					idx--;
 				}
-				//Once 'teamTempStor' reaches (5) total elements/group-members, we move to printing out the completed randomized team of students
+				//Once 'teamTempStor' reaches (5) total elements/group-members, we move to team printing out the completed randomized team of students
 				else if (teamTempStor.size() == 5)
 				{
-					//Team Leader Selection OPTION #1:
-//					sortGroupAlphabetically(teamTempStor);
-					
-					//Team Leader Selection OPTION #2:
-					sortGroupReverseAlphabetically(teamTempStor);
-					
+					sortGroupSelectRandomTL(teamTempStor);
 					generatedTeamConsolePrinter(teamTempStor, teamNum);
 					numStudents--;
 					idx--;
 					
 					//With this team's random grouping and printing complete, we use '.clear()' to remove all elements from our 'tempTeamStor'
-					//We then increment our 'teamNum' to account for the new team that is about to be created
+					//We increment our 'teamNum' to account for the new team that is about to be created
 					teamTempStor.clear();
 					teamNum++;
 					
