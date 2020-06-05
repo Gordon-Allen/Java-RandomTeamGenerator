@@ -50,7 +50,7 @@ public class App
 		System.out.println(" ");
     }
     
-    public static List<String> sortGroupSelectRandomTL(List<String> teamTempStor)
+    public static List<String> randomGroupSortSelectTL(List<String> teamTempStor)
     {
     	//Alphabetically sorting given 'teamTempStor' parameter by First Name
     	Collections.sort(teamTempStor);
@@ -100,7 +100,7 @@ public class App
 					students.remove(randInt);
 										
 					//Calling helper method to sort group and randomly select Team Leader 
-					sortGroupSelectRandomTL(teamTempStor);
+					randomGroupSortSelectTL(teamTempStor);
 					
 					//* Calling helper method to print randomly generated Team Leader/Team to console *
 					generatedTeamConsolePrinter(teamTempStor, teamNum);										
@@ -125,7 +125,7 @@ public class App
 				//Once 'teamTempStor' reaches (5) total elements/group-members, we move to team printing out the completed randomized team of students
 				else if (teamTempStor.size() == 5)
 				{
-					sortGroupSelectRandomTL(teamTempStor);
+					randomGroupSortSelectTL(teamTempStor);
 					generatedTeamConsolePrinter(teamTempStor, teamNum);
 					numStudents--;
 					idx--;
