@@ -30,7 +30,7 @@ public class App
         	  case 1:
         		ArrayList<String> studentsMG = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Anthony Shahid" ,"Brooks McCament", "Calvin Houser", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik East", "Mathias Taylor", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
               	
-              	System.out.println("CLASS SELECTED: Matt's & Gordon's");
+              	System.out.println("--> CLASS SELECTED: Matt's & Gordon's <--");
               	System.out.println(" ");
               	System.out.println("Which would you like generate?:");
               	System.out.println("1) Random Student List Generator");
@@ -55,7 +55,7 @@ public class App
         	  case 2:
         		ArrayList<String> studentsOD = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Ken Cheng", "Larkin Ingram", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
               	
-        		System.out.println("CLASS SELECTED: Orquidia's & Daniel's");
+        		System.out.println("--> CLASS SELECTED: Orquidia's & Daniel's <--");
               	System.out.println(" ");
               	System.out.println("Which would you like generate?:");
               	System.out.println("1) Random Student List Generator");
@@ -92,12 +92,7 @@ public class App
     }
     
     public static void generatedTeamConsolePrinter(List<String> teamTempStor, int teamNum)
-    {
-    	System.out.println( "Welcome to Cognixia JUMP's Class Group Generator!" );
-        System.out.println(" ");
-        System.out.println("Here are your newly generated and randomized teams:");
-        System.out.println(" ");
-    	
+    {    	
     	//Utilizing int parameter "teamNum" to specific team segmentation and grouping
     	System.out.println("   Team " + teamNum);
 		System.out.println("<---------->");
