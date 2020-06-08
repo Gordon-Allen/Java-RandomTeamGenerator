@@ -4,30 +4,98 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class App 
 {
     public static void main(String[] args)
     {
-    	//TO START: Initialize a ArrayList<String> as in the examples below of the names (students, team-mates, etc.) you wish to generate teams from
+    	//TO START: Initialize a ArrayList<String> as in the examples below of the names (students, team-mates, etc.) you wish to generate teams from    	    	
     	
-    	//Matt & Gordon's Class - ArrayList<String> of student names
-    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Anthony Shahid" ,"Brooks McCament", "Calvin Houser", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik E.", "Mathias Taylor", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
-        
-    	//Orquidia & Daniel's Class - ArrayList<String> of student names
-//    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
-    	
-    	System.out.println( "Welcome to Cognixia JUMP's Class Group Generator!" );
-        System.out.println(" ");
-        System.out.println("Here are your newly generated and randomized teams:");
-        System.out.println(" ");
-        
-        //Calling primary random group generator method, passing 'students' as our argument
-        randomGroupGenerator(students);
+    	Scanner sc = new Scanner(System.in);
+    	boolean isSystemOn = true;
+    	  	
+    	while (isSystemOn)
+    	{
+    		System.out.println( "Welcome to Cognixia JUMP's Class Generator App!" );
+            System.out.println(" ");
+            System.out.println("Which class would you like generate lists/groups for?:");
+            System.out.println("1) Matt's & Gordon's Class");
+            System.out.println("2) Orquidia's & Daniel's Class");
+            System.out.println(" ");
+            System.out.println("3) EXIT App");
+            
+            int classChoiceUserInput = sc.nextInt();
+            
+            if (classChoiceUserInput == 1)
+            {
+            	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Anthony Shahid" ,"Brooks McCament", "Calvin Houser", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik East", "Mathias Taylor", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
+            	
+            	System.out.println("CLASS SELECTED: Matt's & Gordon's");
+            	System.out.println(" ");
+            	System.out.println("Which would you like generate?:");
+            	System.out.println("1) Random Student List Generator");
+            	System.out.println("2) Random Group/Team Leader Generator");
+            	
+            	int generatorChoiceUserInput = sc.nextInt();
+            	
+            	if (generatorChoiceUserInput == 1)
+            	{
+            		randomStudentListGenerator(students);
+            	}
+            	else if (generatorChoiceUserInput == 2)
+            	{
+            		randomGroupGenerator(students);
+            	}
+            	else
+            	{
+            		System.out.println("Whoops.......that wasn't '1' or '2'......hmmmm, try again ");
+            	}
+            }
+            else if (classChoiceUserInput == 2)
+            {
+            	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
+            	System.out.println("CLASS SELECTED: Orquidia's & Daniel's");
+            	System.out.println(" ");
+            	System.out.println("Which would you like generate?:");
+            	System.out.println("1) Random Student List Generator");
+            	System.out.println("2) Random Group/Team Leader Generator");
+            	
+            	int generatorChoiceUserInput = sc.nextInt();
+            	
+            	if (generatorChoiceUserInput == 1)
+            	{
+            		randomStudentListGenerator(students);
+            	}
+            	else if (generatorChoiceUserInput == 2)
+            	{
+            		randomGroupGenerator(students);
+            	}
+            	else
+            	{
+            		System.out.println("Whoops.......that wasn't '1' or '2'......hmmmm, try again ");
+            	}
+            }
+            else if (classChoiceUserInput == 3)
+            {
+            	isSystemOn = false;
+            }
+            else
+            {
+            	System.out.println("Whoops.......that wasn't '1' or '2'......hmmmm, try again ");
+            }
+    	}
+    	System.out.println("Thank you for using Cognixia JUMP's Class Group Generator!");
+		System.out.println("<<< Gordon Allen - 2020 >>>");
     }
     
     public static void generatedTeamConsolePrinter(List<String> teamTempStor, int teamNum)
     {
+    	System.out.println( "Welcome to Cognixia JUMP's Class Group Generator!" );
+        System.out.println(" ");
+        System.out.println("Here are your newly generated and randomized teams:");
+        System.out.println(" ");
+    	
     	//Utilizing int parameter "teamNum" to specific team segmentation and grouping
     	System.out.println("   Team " + teamNum);
 		System.out.println("<---------->");
@@ -68,6 +136,33 @@ public class App
     	teamTempStor.set(0, teamLead);
     	return teamTempStor;
     }
+    
+    public static void randomStudentListGenerator(List<String> students)
+	{ 		
+    	//Calculating the number of students we have been given to generate a randomly ordered list of
+    	int numStudents =  students.size();
+    	
+    	//Starting student int 'count' at 1
+    	int count = 1;
+    	
+    	while (numStudents > 0) {
+    		//Generating random int from 0 to the number of elements present in 'students'
+    		//'randInt' == the index of the student we are going to randomly select and group next
+    		int randInt = (int)(numStudents * Math.random());
+    		    		
+    		//Using 'randint' to randomly select student from 'students' by index
+    		String randStudent = students.get(randInt);
+    		
+    		System.out.println("Randomly Selected Student " + count + ": " + randStudent);    		
+    		
+    		//Removing randomly selected and printed student name from 'students'
+    		students.remove(randInt);
+    		
+    		//Incrementing 'count' & decrementing 'numStudents' to account for our ccalculations
+    		count++;
+    		numStudents--;
+    	}
+	}	
 	
 	public static void randomGroupGenerator(List<String> students)
 	{
@@ -141,7 +236,7 @@ public class App
 				}				
 			}
 		}
-		System.out.println("Thank you for using Cognixia JUMP's Class Group Generator!");
-		System.out.println("<<< Gordon Allen - 2020 >>>");
+//		System.out.println("Thank you for using Cognixia JUMP's Class Group Generator!");
+//		System.out.println("<<< Gordon Allen - 2020 >>>");
 	}
 }
